@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 Month Love story Quiz ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ff69b4, #db7093);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ff69b4, #db7093); }
+            50% { background: linear-gradient(135deg, #ff69b4, #db7093, #ffb6c1, #ffc0cb); }
+        }
+
+        .quiz-container {
+            background: rgb(0, 0, 0);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 900px;
+            max-width: 900px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(219, 112, 147, 0.3);
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .quiz-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(219, 112, 147, 0.4);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.3);
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ffc0cb;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff69b4, #d63384);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            box-shadow: 0 2px 4px rgba(214, 51, 132, 0.3);
+        }
+
+        .gif-placeholder {
+            background: linear-gradient(45deg, #ffc0cb, #ffb6c1);
+            border: 3px dashed #d63384;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: #d63384;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .question-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            color: #d63384;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .question {
+            color: #8b4b6b;
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .answer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(214, 51, 132, 0.2);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff69b4, #d63384);
+            color: white;
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+            color: #8b4b6b;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(214, 51, 132, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .input-field {
+            padding: 15px;
+            border: 2px solid #ffc0cb;
+            border-radius: 15px;
+            font-size: 1.1em;
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            color: #8b4b6b;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #d63384;
+            box-shadow: 0 0 10px rgba(214, 51, 132, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d63384, #ff69b4);
+            color: white;
+            margin-top: 15px;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .completion-message {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .completion-message h2 {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        .completion-message p {
+            color: #8b4b6b;
+            font-size: 1.3em;
+            line-height: 1.6;
+        }
+
+        .hearts {
+            font-size: 2em;
+            color: #ff69b4;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .gif-container-correct {
+            width: 200px;
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: celebrationGlow 1s ease-in-out;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes celebrationGlow {
+            0% { box-shadow: 0 0 5px rgba(0, 1, 0, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(0, 1, 0, 0.7); }
+            100% { box-shadow: 0 0 20px rgba(0, 1, 0, 0.5); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2em;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="header">
+            <h1 class="title">18 Months Loyalty Quiz ❤️</h1>
+            <!-- <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div> -->
+        </div>
+
+        <div id="quizContent">
+            <div class="gif-placeholder" id="gifContainer">
+                <img src="assets/index/1.png" alt="GIF" style="width: 200px; height: 150px; border-radius: 15px; object-fit: cover;">
+            </div>
+
+            <div class="question-section">
+                <div class="question-number" id="questionNumber">Question 1 of 18</div>
+                <div class="question" id="questionText">Do you remember our first date?</div>
+            </div>
+
+            <div class="answer-section" id="answerSection">
+                <div class="btn-group">
+                    <button class="btn btn-yes" onclick="checkAnswer(true)">Yes ❤️</button>
+                    <button class="btn btn-no" onclick="checkAnswer(false)">No 💔</button>
+                </div>
+            </div>
+
+            <div id="errorMessage" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "What's my favorite color?", type: "input", answer: "black", gif: "assets/index/1.png", wrongMessage: "Close, but that's not the color that makes my heart skip! 💕" },
+            { question: "What's my dream vacation destination?", type: "input", answer: "japan", gif: "assets/index/2.png", wrongMessage: "Nope! Think about where I always talk about visiting! 🏯" },
+            { question: "Do you love me more than pizza?", type: "yesno", answer: false, gif: "assets/index/3.png", wrongMessage: "Really?! Me over pizza? I don't think you don't know yourself better! 😂🍕" },
+            { question: "What is my favourite energy drink?", type: "input", answer: "white monster", gif: "assets/index/4.png", wrongMessage: "Wrong energy drink, sweetie! Think about what I always drink! 🍼" },
+            { question: "Am I more prettier than you?", type: "yesno", answer: true, gif: "assets/index/5.png", wrongMessage: "Stop being delusional! ☕" },
+            { question: "Which month did we meet each other on Discord?", type: "input", answer: "december", gif: "assets/index/6.pn.png", wrongMessage: "How could you forget our magical first date? Think again! 😘" },
+            { question: "What color jacket was I wearing when I first met you?", type: "input", answer: "green", gif: "assets/index/7.png", wrongMessage: "Nope! You're thinking of the wrong color Mayuri" },
+            { question: "Am I always in your mind?", type: "yesno", answer: true, gif: "assets/index/8.png", wrongMessage: "You need to fix that head of yours." },
+            { question: "What color flowers did I get for you on our first date?", type: "input", answer: "red", gif: "assets/index/9.png", wrongMessage: "Are you color blind?🌹" },
+            { question: "What's my favorite food?", type: "input", answer: "shawarma", gif: "assets/index/10.png", wrongMessage: "Nope! Think about what I always order at restaurants! 🍝" },
+            { question: "What did I get you for our 8 month anniversary?", type: "input", answer: "cake", gif: "assets/index/11.png", wrongMessage: "It's a 🍰" },
+            { question: "Would you give away your life for me?", type: "yesno", answer: true, gif: "assets/index/13.gifscreenshot-.png", wrongMessage: "Your life is mine, so give it bro" },
+            { question: "Who is my sweetest baby girl??", type: "input", answer: "meee", gif: "assets/index/14.png", wrongMessage: "it's youuu (use meee)" },
+            { question: "What's my favorite body part of yours?", type: "input", answer: "lips", gif: "assets/index/15.png", wrongMessage: "You use it to yap a lot btw" },
+            { question: "There's one more body part, I always talk about grabbing it lol", type: "input", answer: "belly", gif: "assets/index/16.png", wrongMessage: "It's the middle of your body" },
+            { question: "What's my biggest fear?", type: "input", answer: "me", gif: "assets/index/17.gif.png", wrongMessage: "It's you! 😭 You just say me" },
+            { question: "Am I better than Taghreed?", type: "yesno", answer: true, gif: "assets/index/love.png", wrongMessage: "I'm better than Taghreed! Don't put her over meeeee" },
+            { question: "Will you be my forever?", type: "yesno", answer: true, gif: "assets/index/love.png", wrongMessage: "There's only one right answer here, my love! 💍" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswer = "";
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            document.getElementById('questionText').textContent = question.question;
+            
+            // Only reset GIF to placeholder if it's the very first question
+            if (currentQuestionIndex === 0) {
+                const gifContainer = document.getElementById('gifContainer');
+                gifContainer.innerHTML = '🎬 Your GIF Goes Here 🎬';
+                gifContainer.className = 'gif-placeholder';
+            }
+            
+            const answerSection = document.getElementById('answerSection');
+            
+            if (question.type === 'yesno') {
+                answerSection.innerHTML = `
+                    <div class="btn-group">
+                        <button class="btn btn-yes" onclick="checkAnswer(true)">Yes ❤️</button>
+                        <button class="btn btn-no" onclick="checkAnswer(false)">No 💔</button>
+                    </div>
+                `;
+            } else {
+                answerSection.innerHTML = `
+                    <input type="text" class="input-field" id="textAnswer" placeholder="Type your answer here..." onkeypress="handleEnter(event)">
+                    <button class="btn submit-btn" onclick="checkTextAnswer()">Submit Answer 💕</button>
+                `;
+                setTimeout(() => document.getElementById('textAnswer').focus(), 100);
+            }
+            
+            hideError();
+            updateProgress();
+        }
+
+        function checkAnswer(answer) {
+            const question = questions[currentQuestionIndex];
+            const correctAnswer = question.answer;
+            
+            if (answer === correctAnswer) {
+                showCorrectAnswerGif();
+                setTimeout(() => {
+                    nextQuestion();
+                }, 500); // Show GIF for 2 seconds before moving to next question
+            } else {
+                showError(question.wrongMessage);
+            }
+        }
+
+        function checkTextAnswer() {
+            const userInput = document.getElementById('textAnswer').value.trim().toLowerCase();
+            const question = questions[currentQuestionIndex];
+            const correctAnswer = question.answer.toLowerCase();
+            
+            if (userInput === correctAnswer) {
+                showCorrectAnswerGif();
+                setTimeout(() => {
+                    nextQuestion();
+                }, 500); // Show GIF for 2 seconds before moving to next question
+            } else {
+                showError(question.wrongMessage);
+            }
+        }
+
+        function showCorrectAnswerGif() {
+            const question = questions[currentQuestionIndex];
+            const gifContainer = document.getElementById('gifContainer');
+            
+            // Replace placeholder with actual GIF
+            gifContainer.innerHTML = `<img src="${question.gif}" alt="Celebration GIF" style="width: 400px; height: 300px; border-radius: 15px; object-fit: cover;">`;
+            gifContainer.className = 'gif-container-correct';
+            
+            // Hide answer buttons to prevent multiple clicks
+            const answerSection = document.getElementById('answerSection');
+            answerSection.style.opacity = '0.5';
+            answerSection.style.pointerEvents = 'none';
+            
+            // Add success message
+            showSuccess("Correct! 🎉 Great job, my love! 💕");
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                checkTextAnswer();
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex >= questions.length) {
+                showCompletion();
+            } else {
+                // Re-enable answer section
+                const answerSection = document.getElementById('answerSection');
+                answerSection.style.opacity = '1';
+                answerSection.style.pointerEvents = 'auto';
+                
+                displayQuestion();
+            }
+        }
+
+        function showSuccess(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.innerHTML = `<div style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px; border-radius: 15px; margin-top: 20px; font-weight: bold; animation: bounce 0.5s ease-in-out;">${message}</div>`;
+            errorDiv.style.display = 'block';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.innerHTML = `<div class="error-message">${message}</div>`;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function showCompletion() {
+            document.getElementById('quizContent').innerHTML = `
+                <div class="completion-message">
+                    <h2>Congratulations! 🎉</h2>
+                    <div class="hearts">💕 💖 💕</div>
+                    <p>You know me so well! You're my one and only, and I'm so grateful to have you in my life.</p>
+                    <div class="hearts">💕 💖 💕</div>
+                    <p>Happy 1 and half year Anniversary, my love! Here's to many more beautiful memories together! ❤️</p>
+                </div>
+            `;
+        }
+
+        // Initialize the quiz
+        displayQuestion();
+    </script>
+</body>
+</html>
